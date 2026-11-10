@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmi | Translator & TeluguFast</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#FFF8F0;color:#222}
+header{background:#FF6B35;color:white;padding:40px 20px;text-align:center}
+header h1{margin:0;font-size:32px} header p{opacity:0.9}
+.container{max-width:800px;margin:auto;padding:20px}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.08);margin-bottom:20px}
+h2{color:#FF6B35}
+.skill{display:inline-block;background:#FFE8DD;padding:8px 12px;border-radius:20px;margin:5px}
+#chatBox{height:200px;overflow-y:auto;border:1px solid #ddd;padding:10px;border-radius:10px;background:#FFFBF8}
+.msg{margin:8px 0;padding:10px;border-radius:10px}
+.user{background:#FF6B35;color:white;text-align:right}
+.bot{background:#eee}
+input,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
+button{background:#FF6B35;color:white;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold;width:100%}
+button:hover{background:#e85a28}
+a{color:#FF6B35;font-weight:bold}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Lakshmi</h1>
+<p>English to Telugu Translator | Creator of TeluguFast</p>
+<p>Guntur, Andhra Pradesh</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>About Me</h2>
+<p>Hello! I am Lakshmi. I help people understand English content in simple Telugu. I translate documents, stories and educational content with clear and natural Telugu.</p>
+</div>
+
+<div class="card">
+<h2>My Skills</h2>
+<span class="skill">English to Telugu Translation</span>
+<span class="skill">Typing</span>
+<span class="skill">AI Tools</span>
+<span class="skill">Content Writing in Telugu</span>
+<span class="skill">Proofreading</span>
+</div>
+
+<div class="card">
+<h2>Project - TeluguFast</h2>
+<p><b>TeluguFast</b> is my project to make English learning easy in Telugu. Simple words, daily use sentences and translation practice.</p>
+<p>Links: <a href="#">TeluguFast</a> | <a href="#">LinkedIn</a></p>
+<p><i>Replace # with your real public links</i></p>
+</div>
+
+<div class="card">
+<h2>Ask Me - AI Ambassador Chat</h2>
+<p style="font-size:13px;color:#666">This chat answers ONLY from my public resume info. It will not share phone, email or address.</p>
+<div id="chatBox"><div class="msg bot">Hi! I am Lakshmi's AI Ambassador. Ask me about skills, TeluguFast or translation services.</div></div>
+<input id="userInput" placeholder="Ex: What are your skills?" />
+<button onclick="sendMsg()">Ask</button>
+</div>
+
+<div class="card">
+<h2>Contact Me</h2>
+<p>Fill this form. Your message will come to me. I will reply soon.</p>
+<!-- BACKEND: Formspree FREE -->
+<form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+<input type="text" name="name" placeholder="Your Name" required />
+<input type="email" name="email" placeholder="Your Email" required />
+<textarea name="message" rows="4" placeholder="Your Message - Ex: I need translation work" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+<p style="font-size:12px;color:#888">Backend: Formspree Free - Your email is hidden from visitors.</p>
+</div>
+
+</div>
+
+<script>
+// BACKEND LOGIC - Inside website, 100% Free
+const resumeData = {
+  skills: "My skills are English to Telugu Translation, Typing, AI Tools, Content Writing in Telugu and Proofreading.",
+  project: "TeluguFast is my project to make English learning easy in Telugu with simple words and daily sentences.",
+  about: "I am Lakshmi from Guntur. I am a Translator. I translate documents and educational content in simple Telugu.",
+  contact: "You can contact me using the Contact Form below. I do not share phone, email or address publicly for safety."
+};
+function sendMsg(){
+  let input = document.getElementById('userInput');
+  let text = input.value.trim();
+  if(!text) return;
+  let box = document.getElementById('chatBox');
+  box.innerHTML += `<div class="msg user">${text}</div>`;
+  let low = text.toLowerCase();
+  let reply = "I can answer about my skills, TeluguFast project, translation services and contact. Please ask about those.";
+  if(low.includes('skill')) reply = resumeData.skills;
+  else if(low.includes('telugufast') || low.includes('project')) reply = resumeData.project;
+  else if(low.includes('who') || low.includes('about') || low.includes('lakshmi')) reply = resumeData.about;
+  else if(low.includes('contact') || low.includes('phone') || low.includes('email') || low.includes('address')) reply = resumeData.contact;
+  else if(low.includes('translat')) reply = "Yes, I do English to Telugu translation for documents, stories and educational content in simple natural Telugu.";
+  else if(low.includes('hi') || low.includes('hello')) reply = "Hello! How can I help you? Ask about my skills or TeluguFast.";
+  box.innerHTML += `<div class="msg bot">${reply}</div>`;
+  input.value = "";
+  box.scrollTop = box.scrollHeight;
+}
+</script>
+</body>
+</html>
